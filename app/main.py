@@ -3,7 +3,9 @@ import strawberry
 from strawberry.fastapi import GraphQLRouter
 import uvicorn
 
-app = FastAPI()
+from app.db import create_db_and_tables
+
+app = FastAPI(on_startup=[create_db_and_tables])
 
 @strawberry.type
 class Query:
